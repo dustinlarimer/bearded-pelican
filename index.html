@@ -27,9 +27,9 @@
 			</div>
 			<div id="nav-tree">
 				<ul>
-					<li>
-						<a href="#">Organization #1</a>
-						<a href="#">Settings</a>
+					<li class="nav-org active">
+						<a class="nav-org-title" href="#org">Organization #1</a>
+						<a class="btn-settings" href="#settings">Settings</a>
 						<ul class="nav-rooms">
 							<li class="nav-room nav-room-group">
 								<a href="#/rooms/1">
@@ -37,23 +37,23 @@
 									<span class="count">3</span>
 								</a>
 							</li>
-							<li class="nav-room nav-room-group">
+							<li class="nav-room nav-room-group active">
 								<a href="#/rooms/2">
 									<span class="title">Room Title</span>
 									<span class="count">4</span>
 								</a>
 							</li>
 							<li class="nav-room nav-room-individual">
-								<a href="#/rooms/3">
+								<a class="nav-room-title" href="#/rooms/3">
 									<span class="title">Individual Title</span>
 									<span class="count">12</span>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="#">Organization #2</a>
-						<a href="#">Settings</a>
+					<li class="nav-org">
+						<a class="nav-org-title" href="#org">Organization #2</a>
+						<a class="btn-settings" href="#settings">Settings</a>
 						<ul class="nav-rooms">
 							<li class="nav-room nav-room-group">
 								<a href="#/rooms/4">
@@ -69,8 +69,10 @@
 							</li>
 						</ul>
 					</li>
+					<li class="nav-org"><a class="nav-org-title" href="#org">Organization #3</a></li>
+					<li class="nav-org"><a class="nav-org-title" href="#org">Organization #4</a></li>
 				</ul>
-				<a href="#">Add an Organization</a>
+				<a class="btn-add" href="#">Add an Organization</a>
 			</div>
 		</nav>
 		<div id="page-container">
