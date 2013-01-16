@@ -7,6 +7,8 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, san-serif;
+  text-decoration: none;
 }
 #app-container {
 	background: #282828; /* Old browsers */
@@ -26,19 +28,22 @@
   width: 200px;
   z-index: 999;
 }
-#nav-container a {
-  font-family: 'Helvetica Neue', Helvetica, Arial, san-serif;
-  text-decoration: none;
-}
-#nav-container ul {
+#nav-container a {}
+
+#nav-container ul,
+#room-sidebar ul {
   padding: 0;
+  list-style: none;
 }
+
 #nav-container h1 {
+	background: url('../assets/Harbor-logo.png') 40% 50% no-repeat;
   bottom: 0;
   color: #000;
   position: absolute;
   left: 0;
   text-align: center;
+	text-indent: -999px;
   text-transform: lowercase;
   width: 100%;
 }
@@ -76,64 +81,6 @@
   float: left;
   font-size: 11px;
 }
-#nav-container #nav-tree {
-  padding: 0;
-}
-#nav-tree a {
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.5);
-}
-#nav-tree ul { margin: 0 }
-
-#nav-tree .nav-org { 
-	clear: both; position: relative; 
-}
-#nav-tree .nav-org .nav-org-title { 
-	background: #000; 
-	background: #282828; /* Old browsers */
-	background: -moz-linear-gradient(top, #282828 0%, #1a1a1a 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,#1a1a1a)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #282828 0%,#1a1a1a 100%); /* Chrome10+,Safari5.1+ */
-	box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 1px 0 2px rgba(0,0,0,.4);
-	color: #ccc; 
-	display: block; 
-	font-size: .6em; 
-	letter-spacing: 1px; 
-	padding: 14px 40px 14px 14px;
-	text-transform: uppercase; 
-}
-#nav-tree .nav-org .btn-settings { background: pink; position: absolute; text-indent: -999px; top: 11px; right: 14px; float: right; width: 20px; }
-#nav-tree .nav-org .btn-settings:hover { background: red; }
-
-#nav-tree .nav-rooms { margin: 0 0 5px; }
-#nav-tree .nav-room a { 
-	clear: both;
-	display: block; 
-	letter-spacing: -.5px; 
-	line-height: 24px; 
-	padding: 2px 40px 4px 14px;
-	position: relative;
-}
-#nav-tree .nav-room a .title { color: #808080; display: block; font-size: 13px; font-weight: 700;  }
-#nav-tree .nav-room a .count { 
-	background: #1a1a1a;
-	border-radius: 5px;
-	box-shadow: inset 0 1px 4px rgba(0,0,0,.25);
-	color: #d7d7d7; 
-	font-size: .6em; 
-	font-weight: normal; 
-	line-height: 16px; 
-	min-width: 20px; 
-	padding: 0 4px; 
-	position: absolute; 
-	right: 14px; 
-	top: 8px; 
-	text-align: center; 
-}
-
-#nav-tree .nav-room.active a .title,
-#nav-tree .nav-room.active a .count { color: #ffffff; }
-
 #nav-tree a.btn-add {
 	background: #1a1a1a;
 	border-radius: 5px;
@@ -147,6 +94,92 @@
 	text-align: center;
 	text-transform: uppercase;
 }
+
+
+.accordian { padding: 0 }
+.accordian a {
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+.accordian ul { margin: 0 }
+
+.accordian .accordian-segment { clear: both; position: relative; }
+
+.accordian .accordian-header {
+	background: #000; 
+	background: #282828; /* Old browsers */
+	background: -moz-linear-gradient(top, #282828 0%, #1a1a1a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,#1a1a1a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #282828 0%,#1a1a1a 100%); /* Chrome10+,Safari5.1+ */
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 1px 0 2px rgba(0,0,0,.4);
+	color: #ccc; 
+	display: block; 
+	font-size: .6em; 
+	letter-spacing: 1px; 
+	line-height: 38px;
+	padding: 2px 40px 0 14px;
+	text-transform: uppercase;
+}
+
+.accordian .accordian-header .accordian-icon { 
+	margin: -2px 0 0 -4px;
+	vertical-align: middle; 
+}
+.accordian .accordian-header small {
+	color: #808080;
+	font-size: 1em;
+}
+
+.accordian .accordian-action {
+	background: pink; 
+	position: absolute; 
+	text-indent: -999px; 
+	top: 11px; 
+	right: 14px; 
+	float: right; 
+	width: 20px;
+}
+.accordian .accordian-action:hover { background: red }
+
+.accordian .accordian-content { margin: 5px 0 }
+.accordian .accordian-item a {
+	clear: both;
+	display: block; 
+	letter-spacing: -.5px; 
+	line-height: 24px; 
+	padding: 2px 40px 2px 14px;
+	position: relative;
+}
+.accordian .accordian-item-title {
+	color: #808080; 
+	display: block; 
+	font-size: 13px; 
+	font-weight: 700;
+}
+.accordian .accordian-item-count {
+	background: #1a1a1a;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 4px rgba(0,0,0,.25);
+	color: #d7d7d7; 
+	font-size: .6em; 
+	font-weight: normal; 
+	line-height: 16px; 
+	min-width: 20px; 
+	padding: 0 4px; 
+	position: absolute; 
+	right: 14px; 
+	top: 8px; 
+	text-align: center;
+}
+.accordian a.active .accordian-item-title,
+.accordian a.active .accordian-item-count { color: #ffffff }
+.accordian a.active .accordian-item-count:after {
+	content: url('../assets/nav-tree_active.png');
+	position: absolute;
+	z-index: 999;
+	right: -16px;
+}
+
 
 
 
@@ -168,29 +201,68 @@
   width: 100%;
   z-index: 2;
 }
+
+#page-container #room-stream #conversation {
+	background: #fff;
+	bottom: 100px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.25);
+	left: 14px;
+	position: absolute;
+	right: 14px;
+	top: 0;
+	z-index: 1;
+}
 #page-container #room-stream #message-container {
-  background: #fff;
-  bottom: 100px;
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  left: 0;
-  margin: 0 14px 10px;
-  overflow-y: scroll;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
+	bottom: 0;
+	left: -14px;
+	overflow-y: scroll;
+	padding: 0 14px;
+  	position: absolute;
+	right: -14px;
+	top: 0;
+  
 }
 #page-container #room-stream #message-container ul {
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 0;
+	bottom: 0;
+	color: #4d4d4d;
+ 	font-size: .9em;
+	line-height: 1.25em;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 20px;
 }
+#message-container li.message {
+	padding: 10px 10px 0 30px;
+}
+#message-container li.message .message-author { border-top: 1px solid #e5e5e5; height: 10px; margin: 10px 0 0; position: relative; }
+#message-container li.message .message-author .user-avatar {
+	border: 2px solid #fff;
+	border-radius: 4px;
+	left: -38px;
+	position: absolute;
+	top: -12px;
+}
+#message-container li.message .message-author .user-name,
+#message-container li.message .message-author .user-meta {
+	background: #fff;
+	position: absolute;
+	top: -10px;
+}
+#message-container li.message .message-author .user-name { 
+	color: #808080;
+	font-size: .8em;
+	font-weight: 500;
+	left: 0; padding-right: 5px; 
+}
+#message-container li.message .message-author .user-meta { 
+	color: #ccc;
+	font-size: .75em;
+	right: 0; padding-left: 5px; 
+}
+#message-container li.message .message-author .user-meta img {
+	vertical-align: middle;
+}
+
 #page-container #room-stream #message-compose {
   bottom: 10px;
   left: 0;
@@ -226,17 +298,14 @@
 #page-container #room-sidebar {
 	border-right: 4px solid #333;
 	box-shadow: inset -1px 0 2px rgba(0,0,0,.4);
-  color: #fff;
-  height: 100%;
-  padding: 0 14px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 200px;
+	color: #fff;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 200px;
 }
-#page-container #room-sidebar a {
-  color: #fff;
-}
+
 /* ==========================================================================
    Header
    ========================================================================== */

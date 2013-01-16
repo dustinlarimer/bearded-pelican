@@ -25,52 +25,52 @@
 					<span class="user-status">On the road til Friday</span>
 				</a>
 			</div>
-			<div id="nav-tree">
+			<div id="nav-tree" class="accordian">
 				<ul>
-					<li class="nav-org active">
-						<a class="nav-org-title" href="#org">Organization #1</a>
-						<a class="btn-settings" href="#settings">Settings</a>
-						<ul class="nav-rooms">
-							<li class="nav-room nav-room-group">
+					<li class="accordian-segment active">
+						<a class="accordian-header" href="#org">Organization #1</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
 								<a href="#/rooms/1">
-									<span class="title">Room Title</span>
-									<span class="count">3</span>
+									<span class="accordian-item-title">Room</span>
+									<span class="accordian-item-count">3</span>
 								</a>
 							</li>
-							<li class="nav-room nav-room-group active">
+							<li class="accordian-item active">
 								<a href="#/rooms/2">
-									<span class="title">Room Title</span>
-									<span class="count">4</span>
+									<span class="accordian-item-title">Room</span>
+									<span class="accordian-item-count">4</span>
 								</a>
 							</li>
-							<li class="nav-room nav-room-individual">
-								<a class="nav-room-title" href="#/rooms/3">
-									<span class="title">Individual Title</span>
-									<span class="count">12</span>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">Individual</span>
+									<span class="accordian-item-count">12</span>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li class="nav-org">
-						<a class="nav-org-title" href="#org">Organization #2</a>
-						<a class="btn-settings" href="#settings">Settings</a>
-						<ul class="nav-rooms">
-							<li class="nav-room nav-room-group">
+					<li class="accordian-segment nav-org">
+						<a class="accordian-header" href="#org">Organization #2</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
 								<a href="#/rooms/4">
-									<span class="title">Room Title</span>
-									<span class="count"></span>
+									<span class="accordian-item-title">Room</span>
+									<span class="accordian-item-count"></span>
 								</a>
 							</li>
-							<li class="nav-room nav-room-group">
+							<li class="accordian-item">
 								<a href="#/rooms/5">
-									<span class="title">Room Title</span>
-									<span class="count">6</span>
+									<span class="accordian-item-title">Room</span>
+									<span class="accordian-item-count">6</span>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li class="nav-org"><a class="nav-org-title" href="#org">Organization #3</a></li>
-					<li class="nav-org"><a class="nav-org-title" href="#org">Organization #4</a></li>
+					<li class="accordian-segment"><a class="accordian-header" href="#org">Organization #3</a></li>
+					<li class="accordian-segment"><a class="accordian-header" href="#org">Organization #4</a></li>
 				</ul>
 				<a class="btn-add" href="#">Add an Organization</a>
 			</div>
@@ -79,24 +79,61 @@
 			<div id="room-container">
 				<div id="room-stream" role="main">
 					<header>Utility Bar</header>
+					<div id="conversation">
 					<div id="message-container">
 						<ul>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
-							<li>Message</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Lou</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Dustin</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Wayne</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Dustin</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Lou</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
 						</ul>
+					</div>
 					</div>
 					<div id="message-compose">
 						<form>
@@ -109,9 +146,49 @@
 					</div>
 				</div>
 				<aside id="room-sidebar" role="complementary">
-					<section class="widget" id="widget-buds">Buddies</section>
-					<section class="widget" id="widget-recent-files">Recent Files</section>
-					<section class="widget" id="widget-recent-links">Recent Links</section>
+					<div class="accordian">
+						<ul>
+							<li class="accordian-segment widget active">
+								<a class="accordian-header" href="#org">
+									<img class="accordian-icon" src="assets/icons/accordian-members.png" />
+									Members <small>(3)</small>
+								</a>
+								<a class="accordian-action btn-add" href="#add">Add</a>
+								<ul class="accordian-content">
+									<li class="accordian-item">
+										<a href="#/rooms/1">
+											<span class="accordian-item-title">Lou</span>
+											<span class="accordian-item-count"></span>
+										</a>
+									</li>
+									<li class="accordian-item active">
+										<a href="#/rooms/2">
+											<span class="accordian-item-title">Wayne</span>
+											<span class="accordian-item-count"></span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/rooms/3">
+											<span class="accordian-item-title">Dustin</span>
+											<span class="accordian-item-count"></span>
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="accordian-segment widget">
+								<a class="accordian-header" href="#">
+									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
+									Recent Files
+								</a>
+							</li>
+							<li class="accordian-segment widget">
+								<a class="accordian-header" href="#">
+									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
+									Recent Links
+								</a>
+							</li>
+						</ul>
+					</div>
 				</aside>
 			</div>
 		</div>
