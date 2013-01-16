@@ -78,7 +78,22 @@
 		<div id="page-container">
 			<div id="room-container">
 				<div id="room-stream" role="main">
-					<header>Utility Bar</header>
+					<header>
+						<div id="stream-activity">
+							<a class="btn-stream-activity" href="#"></a>
+						</div>
+						<div id="stream-filter">
+							<a class="btn-stream-all" href="#"></a>
+							<a class="btn-stream-media" href="#"></a>
+							<a class="btn-stream-attach" href="#"></a>
+							<form>
+								<input type="search" placeholder="Search History" value="">
+							</form>
+						</div>
+						<div id="stream-settings">
+							<a class="btn-stream-settings" href="#"></a>
+						</div>
+					</header>
 					<div id="conversation">
 					<div id="message-container">
 						<ul>
@@ -139,8 +154,11 @@
 						<form>
 							<textarea autofocus required></textarea>
 							<div id="button-bank">
-								<a href="#">Attach</a>
-								<button>Send</button>
+								<a class='btn btn-inverse' href="">Attach</a>
+								<label>
+									<input type="checkbox" value="urgent"> Urgent
+								</label>
+								<button class="btn btn-primary" type="submit">Send</button>
 							</div>
 						</form>
 					</div>
@@ -180,12 +198,14 @@
 									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
 									Recent Files
 								</a>
+								<a class="accordian-action btn-search" href="#add" title="Browse Files">Browse Files</a>
 							</li>
 							<li class="accordian-segment widget">
 								<a class="accordian-header" href="#">
 									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
 									Recent Links
 								</a>
+								<a class="accordian-action btn-search" href="#add" title="Browse Links">Browse Links</a>
 							</li>
 						</ul>
 					</div>
