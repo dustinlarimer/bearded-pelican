@@ -410,6 +410,12 @@ a.asset-badge .asset-name {
 }
 #page-container #room-stream header {
   background: rgba(140,240,240,0.85);
+  /*
+	background: rgba(0,174,255,0.85); Blue
+	background: rgba(255,126,0,0.85); Orange
+	background: rgba(140,240,240,0.85); Sea-foam
+	background: rgba(143,244,81,0.85); Green
+  */
   height: 42px;
   position: absolute;
   width: 100%;
