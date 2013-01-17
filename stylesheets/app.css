@@ -10,6 +10,18 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, san-serif;
   text-decoration: none;
 }
+
+::selection { /* Safari */
+	background: rgba(140,240,240,0.85);
+	color: #282828;
+	text-shadow: none;
+}
+::-moz-selection { /* Firefox */
+	background: rgba(140,240,240,0.85);
+	color: #282828;
+	text-shadow: none;
+}
+
 ::-webkit-input-placeholder {
     color:    #ccc;
 }
@@ -72,7 +84,7 @@
   display: block;
   height: 41px;
   margin-left: -4px;
-  padding: 5px 14px;
+  padding: 5px 10px;
 }
 
 #nav-tree a.btn-add {
@@ -110,10 +122,10 @@ a.asset-badge .asset-name {
   font-weight: 700;
   padding: 5px 0 0;
 
-	left: 54px;
+	left: 50px;
 	padding: 4px 0 0;
 	position: absolute;
-	right: 14px;
+	right: 10px;
 	
 	white-space: nowrap;
 	overflow: hidden;
@@ -126,9 +138,9 @@ a.asset-badge .asset-name {
   float: left;*/
   font-size: 11px;
 
-	left: 54px;
+	left: 50px;
 	position: absolute;
-	right: 14px;
+	right: 10px;
 	top: 22px;
 	
 	white-space: nowrap;
@@ -138,7 +150,7 @@ a.asset-badge .asset-name {
 
 .user-badge .user-meta {
 	position: absolute;
-	right: 14px;
+	right: 10px;
 }
 
 
@@ -314,17 +326,18 @@ a.asset-badge .asset-name {
 	background: -moz-linear-gradient(top, #282828 0%, #1a1a1a 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,#1a1a1a)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #282828 0%,#1a1a1a 100%); /* Chrome10+,Safari5.1+ */
-	box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 1px 0 2px rgba(0,0,0,.4);
 	color: #ccc; 
 	display: block; 
 	font-size: .6em; 
 	letter-spacing: 1px; 
 	line-height: 38px;
-	padding: 2px 40px 0 14px;
+	padding: 2px 40px 0 10px;
 	position: relative;
 	text-transform: uppercase;
 	z-index: 9999;
 }
+#nav-container .accordian-header  { box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 1px 0 2px rgba(0,0,0,.4); }
+#page-container .accordian-header { box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset -1px 0 2px rgba(0,0,0,.4); }
 
 .accordian .accordian-header .accordian-icon { 
 	margin: -2px 8px 0 0;
@@ -340,7 +353,7 @@ a.asset-badge .asset-name {
 	position: absolute; 
 	text-indent: -999px; 
 	top: 12px; 
-	right: 14px; 
+	right: 10px; 
 	float: right; 
 	width: 20px;
 	z-index: 9999;
@@ -354,7 +367,7 @@ a.asset-badge .asset-name {
 	display: inline-block; 
 	letter-spacing: -.5px; 
 	min-height: 0;
-	padding: 7px 40px 5px 14px;
+	padding: 7px 40px 5px 10px;
 	position: relative;
 	width: 100%;
 }
@@ -380,7 +393,7 @@ a.asset-badge .asset-name {
 	min-width: 20px; 
 	padding: 0 4px; 
 	position: absolute; 
-	right: 14px; 
+	right: 10px; 
 	top: 7px; 
 	text-align: center;
 }
@@ -390,7 +403,7 @@ a.asset-badge .asset-name {
 	content: url('../assets/nav-tree_active.png');
 	position: absolute;
 	z-index: 999;
-	right: -16px;
+	right: -12px;
 }
 .accordian .accordian-item a:hover .accordian-item-title,
 .accordian .accordian-item a:hover .accordian-item-count { color: #ccc}
@@ -399,7 +412,9 @@ a.asset-badge .asset-name {
 
 #page-container {
   height: 100%;
+  overflow: hidden;
   padding-left: 200px;
+  position: relative;
 }
 #page-container #room-stream {
   background: #e5e5e5;
@@ -407,7 +422,12 @@ a.asset-badge .asset-name {
   left: 200px;
   position: absolute;
   right: 200px;
+	-webkit-transition: right 0.6s ease;
+	   -moz-transition: right 0.6s ease;
+	     -o-transition: right 0.6s ease;
+            transition: right 0.6s ease;
 }
+
 #page-container #room-stream header {
   background: rgba(140,240,240,0.85);
   /*
@@ -624,10 +644,14 @@ a.asset-badge .asset-name {
 	right: 0;
 	top: 0;
 	width: 200px;
+	-webkit-transition: right 0.6s ease;
+	   -moz-transition: right 0.6s ease;
+	     -o-transition: right 0.6s ease;
+            transition: right 0.6s ease;
 }
 
-#room-sidebar .widget .user-badge { border-top: 1px solid #444; padding-right: 14px; }
-#room-sidebar .widget .asset-badge { padding: 7px 14px 0; }
+#room-sidebar .widget .user-badge { border-top: 1px solid #444; padding-right: 10px; }
+#room-sidebar .widget .asset-badge { padding: 7px 10px 0; }
 #room-sidebar .widget .user-avatar,
 #room-sidebar .widget .asset-avatar { border: 1px solid transparent }
 
@@ -640,7 +664,7 @@ border-color: #faa732;
 box-shadow: 2px 2px 0 #dd514c;
 border-color: #dd514c;
 }
-#room-sidebar .widget .user-badge .user-name { right: 35px }
+#room-sidebar .widget .user-badge .user-name { right: 31px }
 #room-sidebar .widget .user-badge .user-info { top: 25px }
 #room-sidebar .widget .user-badge:hover .user-info .status-time { }
 #room-sidebar .widget .user-badge:hover .user-info .status-text { color: #ccc; display: block; }
@@ -826,3 +850,9 @@ border-color: #dd514c;
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
+
+
+
+#page-container .sidebar-collapse #room-stream { right: 50px }
+#page-container .sidebar-collapse #room-sidebar { right: -150px }
