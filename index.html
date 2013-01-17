@@ -19,10 +19,10 @@
 		<nav id="nav-container">
 			<h1>Harbor</h1>
 			<div id="nav-user">
-				<a href="#">
+				<a href="#" class="user-badge">
 					<img class="user-avatar" src="assets/avatar-28x28.png" /> 
 					<span class="user-name">First Last</span>
-					<span class="user-status">On the road til Friday</span>
+					<span class="user-info">On the road til Friday</span>
 				</a>
 			</div>
 			<div id="nav-tree" class="accordian">
@@ -83,7 +83,7 @@
 							<a class="btn-stream-activity" href="#"></a>
 						</div>
 						<div id="stream-filter">
-							<a class="btn-stream-all" href="#"></a>
+							<a class="btn-stream-all active" href="#"></a>
 							<a class="btn-stream-media" href="#"></a>
 							<a class="btn-stream-attach" href="#"></a>
 							<form>
@@ -97,6 +97,36 @@
 					<div id="conversation">
 					<div id="message-container">
 						<ul>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Lou</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Lou</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatar-28x28.png" />
+									<span class="user-name">Lou</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
 							<li class="message">
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatar-28x28.png" />
@@ -167,45 +197,103 @@
 					<div class="accordian">
 						<ul>
 							<li class="accordian-segment widget active">
-								<a class="accordian-header" href="#org">
+								<a class="accordian-header" href="#members">
 									<img class="accordian-icon" src="assets/icons/accordian-members.png" />
 									Members <small>(3)</small>
 								</a>
 								<a class="accordian-action btn-add" href="#add">Add</a>
 								<ul class="accordian-content">
 									<li class="accordian-item">
-										<a href="#/rooms/1">
-											<span class="accordian-item-title">Lou</span>
-											<span class="accordian-item-count"></span>
-										</a>
-									</li>
-									<li class="accordian-item active">
-										<a href="#/rooms/2">
-											<span class="accordian-item-title">Wayne</span>
-											<span class="accordian-item-count"></span>
+										<a href="#/user/1" class="user-badge">
+											<img class="user-avatar status-away" src="assets/avatar-28x28.png" /> 
+											<span class="user-name">Lou Kosak</span>
+											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar bar-danger" style="left: 0px; width: 30px;"></div>
+													<div class="bar" style="left: 50px; width: 15px;"></div>
+													<div class="bar" style="left: 90px; width: 30px"></div>
+												</div>
+												<span class="status-text">Coffee hauntin'</span>
+											</span>
 										</a>
 									</li>
 									<li class="accordian-item">
-										<a href="#/rooms/3">
-											<span class="accordian-item-title">Dustin</span>
-											<span class="accordian-item-count"></span>
+										<a href="#/user/2" class="user-badge">
+											<img class="user-avatar status-warning" src="assets/avatar-28x28.png" /> 
+											<span class="user-name">Wayne Mulligan</span>
+											<span class="user-meta"><img src="assets/icons/place-mobile.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
+													<div class="bar" style="left: 90px; width: 30px"></div>
+												</div>
+												<span class="status-text">Something going on</span>
+											</span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/user/3" class="user-badge">
+											<img class="user-avatar" src="assets/avatar-28x28.png" /> 
+											<span class="user-name">Dustin Larimer</span>
+											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar" style="left: 60px; width: 15px;"></div>
+													<div class="bar" style="left: 80px; width: 15px;"></div>
+													<div class="bar" style="left: 100px; width: 15px"></div>
+												</div>
+												<span class="status-text">On the road til Friday</span>
+											</span>
 										</a>
 									</li>
 								</ul>
 							</li>
 							<li class="accordian-segment widget">
-								<a class="accordian-header" href="#">
+								<a class="accordian-header" href="#files">
 									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
 									Recent Files
 								</a>
 								<a class="accordian-action btn-search" href="#add" title="Browse Files">Browse Files</a>
+								<ul class="accordian-content">
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28.png" /> 
+											<span class="asset-name">Screenshot-123.png</span>
+											<span class="asset-info">PNG | 4.3MB</span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-pdf.png" /> 
+											<span class="asset-name">2013_Q2-Brief.pdf</span>
+											<span class="asset-info">PDF | 23.1MB</span>
+										</a>
+									</li>
+								</ul>
 							</li>
 							<li class="accordian-segment widget">
-								<a class="accordian-header" href="#">
+								<a class="accordian-header" href="#links">
 									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
 									Recent Links
 								</a>
 								<a class="accordian-action btn-search" href="#add" title="Browse Links">Browse Links</a>
+								<ul class="accordian-content">
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-sg.png" /> 
+											<span class="asset-name">Here's a super long link title that goes on and on!</span>
+											<span class="asset-info">http://sample-links.com/heres-a-super-long-link-title/</span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-ga.png" /> 
+											<span class="asset-name">And here is another big one!</span>
+											<span class="asset-info">http://sample-links.com/and-here-is-another-big-one/</span>
+										</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
