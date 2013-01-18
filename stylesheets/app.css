@@ -852,7 +852,12 @@ border-color: #dd514c;
 }
 
 
-
+/* TEMP for DEMO */
+@media only screen 
+and (max-width : 800px) {
+	#page-container #room-stream { right: 50px }
+	#page-container #room-sidebar { right: -150px }
+}
 
 #page-container .sidebar-collapse #room-stream { right: 50px }
 #page-container .sidebar-collapse #room-sidebar { right: -150px }
