@@ -1,0 +1,171 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Harbor - Chat</title>
+  <meta name="viewport" content="width=device-width">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="stylesheets/start.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <link rel="stylesheet" href="stylesheets/end.css">
+	<script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/app.js"></script>
+	<script src="javascripts/iscroll.js"></script>
+	<script src="javascripts/areacomplete.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var calendars = []
+		var iscrolls = []
+		$(".status-schedule-items").each(function(i){
+			var this_id = "schedule_"+i
+			$(this).attr("id", this_id);
+			//calendars.push($(this));
+			iScroll = new iScroll(this_id, {
+				//bounceLock: true,
+				desktopCompatibility: true,
+				hScrollbar: false,
+				vScrollbar: false
+			});
+		});
+		//myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
+	})
+	/*
+		var myScroll;
+
+		function setHeight() {
+			var headerH = document.getElementById('header').offsetHeight;
+			var wrapperH = window.innerHeight - headerH;
+			document.getElementById('wrapper').style.height = wrapperH + 'px';
+		}
+
+		function loaded() {
+			setHeight();
+			myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
+		}
+
+		window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
+		document.addEventListener('touchstart', function(e){ e.preventDefault(); }, false);
+		document.addEventListener('DOMContentLoaded', loaded, false);
+		*/
+	</script>
+</head>
+<body>
+	<div id="app-container">
+		<nav id="nav-container">
+			<h1>Harbor</h1>
+			<div id="nav-user">
+				<a href="#" class="user-badge">
+					<img class="user-avatar" src="assets/avatars/dcohen.png" /> 
+					<span class="user-name">David Cohen</span>
+					<span class="user-info">San Antonio thru Monday</span>
+				</a>
+			</div>
+			<div id="nav-tree" class="accordian">
+				<ul>
+					<li class="accordian-segment active">
+						<a class="accordian-header" href="#org">TechStars</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
+								<a href="#/rooms/1">
+									<span class="accordian-item-title">New York</span>
+									<span class="accordian-item-count">12</span>
+								</a>
+							</li>
+							<li class="accordian-item active">
+								<a href="#/rooms/2">
+									<span class="accordian-item-title">Cloud</span>
+									<span class="accordian-item-count">2</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">Boulder</span>
+									<span class="accordian-item-count"></span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">
+										<img class src="assets/avatars/jseats.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										Jason Seats
+									</span>
+									<span class="accordian-item-count">1</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">
+										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										Nicole Glaros
+									</span>
+									<span class="accordian-item-count">7</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/">
+									<span class="accordian-item-title">
+										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										Browse All
+									</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="accordian-segment nav-org">
+						<a class="accordian-header" href="#org">Another Company</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
+								<a href="#/rooms/4">
+									<span class="accordian-item-title">Lounge</span>
+									<span class="accordian-item-count">2</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/5">
+									<span class="accordian-item-title">Dev Team</span>
+									<span class="accordian-item-count"></span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="accordian-segment"><a class="accordian-header" href="#org">A Third Org, Inc.</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="page-container">
+			<div id="directory-container" role="main">
+				
+				<header id="utility-nav">
+						
+						<div class="utility-controls" id="directory-filter">
+							<a class="btn-directory-contacts active" href="#">Contacts</a>
+							<a class="btn-directory-streams" href="#">Streams</a>
+							<form>
+								<input type="search" placeholder="Search History" value="">
+							</form>
+						</div>
+						
+						<div class="utility-controls" id="directory-toggle">
+							<div class="btn-toggle">
+								<a href="#" title="List view is active" class="btn-icon btn-toggle-list active"></a>
+								<a href="#" title="Switch to grid view" class="btn-icon btn-toggle-grid"></a>
+							</div>
+						</div>
+						
+						<div class="utility-controls" id="utility-settings">
+							<a class="btn-icon btn-utility-settings" href="#"></a>
+						</div>
+						
+					</header>
+					
+			</div>
+		</div>
+	</div>
+</body>
+</html>

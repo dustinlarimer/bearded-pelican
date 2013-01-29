@@ -1,305 +1,90 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Harbor - Chat</title>
-  <meta name="viewport" content="width=device-width">
-  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <link rel="stylesheet" href="stylesheets/start.css">
-  <link rel="stylesheet" href="stylesheets/app.css">
-  <link rel="stylesheet" href="stylesheets/end.css">
-  <script src="javascripts/app.js"></script>
+  <title>Chrome Notifications</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script>
+    function Notifier() {}
+
+    // Returns "true" if this browser supports notifications.
+    Notifier.prototype.HasSupport = function() {
+      if (window.webkitNotifications) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Request permission for this page to send notifications. If allowed,
+    // calls function "cb" with true.
+    Notifier.prototype.RequestPermission = function(cb) {
+      window.webkitNotifications.requestPermission(function() {
+        if (cb) { cb(window.webkitNotifications.checkPermission() == 0); }
+      });
+    }
+
+    // Popup a notification with icon, title, and body. Returns false if
+    // permission was not granted.
+    Notifier.prototype.Notify = function(icon, title, body) {
+      if (window.webkitNotifications.checkPermission() == 0) {
+        var popup = window.webkitNotifications.createNotification(
+        icon, title, body);
+				popup.onclick = function(){
+					window.focus();
+					this.cancel();
+				}
+
+        popup.show();
+
+        return true;
+      }
+
+      return false;
+    }
+
+    $(function() {
+      var notifier = new Notifier();
+
+			notifier.RequestPermission();
+
+      if (!notifier.HasSupport()) {
+        $("#error").show();
+        return;
+      }
+
+      $("#request-permission").click(function() {
+        $("#error").hide();
+        notifier.RequestPermission();
+      });
+
+      $("#notify-me").click(function() {
+        if (!notifier.Notify("", "Room name", "New message!")) {
+          $("#error").text('Permission denied. Click "Request Permission" to give this domain access to send notifications to your desktop.');
+          $("#error").show();
+        } else {
+          $("#error").hide();
+        }
+      });
+    });
+  </script>
 </head>
 <body>
-	<div id="app-container">
-		<nav id="nav-container">
-			<h1>Harbor</h1>
-			<div id="nav-user">
-				<a href="#" class="user-badge">
-					<img class="user-avatar" src="assets/avatar-28x28.png" /> 
-					<span class="user-name">First Last</span>
-					<span class="user-info">On the road til Friday</span>
-				</a>
-			</div>
-			<div id="nav-tree" class="accordian">
-				<ul>
-					<li class="accordian-segment active">
-						<a class="accordian-header" href="#org">Organization #1</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
-						<ul class="accordian-content">
-							<li class="accordian-item">
-								<a href="#/rooms/1">
-									<span class="accordian-item-title">Room</span>
-									<span class="accordian-item-count">3</span>
-								</a>
-							</li>
-							<li class="accordian-item active">
-								<a href="#/rooms/2">
-									<span class="accordian-item-title">Room</span>
-									<span class="accordian-item-count">4</span>
-								</a>
-							</li>
-							<li class="accordian-item">
-								<a href="#/rooms/3">
-									<span class="accordian-item-title">Individual</span>
-									<span class="accordian-item-count">12</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="accordian-segment nav-org">
-						<a class="accordian-header" href="#org">Organization #2</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
-						<ul class="accordian-content">
-							<li class="accordian-item">
-								<a href="#/rooms/4">
-									<span class="accordian-item-title">Room</span>
-									<span class="accordian-item-count"></span>
-								</a>
-							</li>
-							<li class="accordian-item">
-								<a href="#/rooms/5">
-									<span class="accordian-item-title">Room</span>
-									<span class="accordian-item-count">6</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="accordian-segment"><a class="accordian-header" href="#org">Organization #3</a></li>
-					<li class="accordian-segment"><a class="accordian-header" href="#org">Organization #4</a></li>
-				</ul>
-				<a class="btn-add" href="#">Add an Organization</a>
-			</div>
-		</nav>
-		<div id="page-container">
-			<div id="room-container">
-				<div id="room-stream" role="main">
-					<header>
-						<div id="stream-activity">
-							<a class="btn-stream-activity" href="#"></a>
-						</div>
-						<div id="stream-filter">
-							<a class="btn-stream-all active" href="#"></a>
-							<a class="btn-stream-media" href="#"></a>
-							<a class="btn-stream-attach" href="#"></a>
-							<form>
-								<input type="search" placeholder="Search History" value="">
-							</form>
-						</div>
-						<div id="stream-settings">
-							<a class="btn-stream-settings" href="#"></a>
-						</div>
-					</header>
-					<div id="conversation">
-					<div id="message-container">
-						<ul>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Lou</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Lou</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Lou</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Lou</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Dustin</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Wayne</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Dustin</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-							<li class="message">
-								<div class="message-author">
-									<img class="user-avatar" src="assets/avatar-28x28.png" />
-									<span class="user-name">Lou</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
-								</div>
-								<div class="message-content">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
-								</div>
-							</li>
-						</ul>
-					</div>
-					</div>
-					<div id="message-compose">
-						<form>
-							<textarea autofocus required></textarea>
-							<div id="button-bank">
-								<a class='btn btn-inverse' href="">Attach</a>
-								<label>
-									<input type="checkbox" value="urgent"> Urgent
-								</label>
-								<button class="btn btn-primary" type="submit">Send</button>
-							</div>
-						</form>
-					</div>
-				</div>
-				<aside id="room-sidebar" role="complementary">
-					<div class="accordian">
-						<ul>
-							<li class="accordian-segment widget active">
-								<a class="accordian-header" href="#members">
-									<img class="accordian-icon" src="assets/icons/accordian-members.png" />
-									Members <small>(3)</small>
-								</a>
-								<a class="accordian-action btn-add" href="#add">Add</a>
-								<ul class="accordian-content">
-									<li class="accordian-item">
-										<a href="#/user/1" class="user-badge">
-											<img class="user-avatar status-away" src="assets/avatar-28x28.png" /> 
-											<span class="user-name">Lou Kosak</span>
-											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar bar-danger" style="left: 0px; width: 30px;"></div>
-													<div class="bar" style="left: 50px; width: 15px;"></div>
-													<div class="bar" style="left: 90px; width: 30px"></div>
-												</div>
-												<span class="status-text">Coffee hauntin'</span>
-											</span>
-										</a>
-									</li>
-									<li class="accordian-item">
-										<a href="#/user/2" class="user-badge">
-											<img class="user-avatar status-warning" src="assets/avatar-28x28.png" /> 
-											<span class="user-name">Wayne Mulligan</span>
-											<span class="user-meta"><img src="assets/icons/place-mobile.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
-													<div class="bar" style="left: 90px; width: 30px"></div>
-												</div>
-												<span class="status-text">Something going on</span>
-											</span>
-										</a>
-									</li>
-									<li class="accordian-item">
-										<a href="#/user/3" class="user-badge">
-											<img class="user-avatar" src="assets/avatar-28x28.png" /> 
-											<span class="user-name">Dustin Larimer</span>
-											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar" style="left: 60px; width: 15px;"></div>
-													<div class="bar" style="left: 80px; width: 15px;"></div>
-													<div class="bar" style="left: 100px; width: 15px"></div>
-												</div>
-												<span class="status-text">On the road til Friday</span>
-											</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="accordian-segment widget">
-								<a class="accordian-header" href="#files">
-									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
-									Recent Files
-								</a>
-								<a class="accordian-action btn-search" href="#add" title="Browse Files">Browse Files</a>
-								<ul class="accordian-content">
-									<li class="accordian-item">
-										<a href="#/user/1" class="asset-badge">
-											<img class="asset-avatar status-away" src="assets/asset-28x28.png" /> 
-											<span class="asset-name">Screenshot-123.png</span>
-											<span class="asset-info">PNG | 4.3MB</span>
-										</a>
-									</li>
-									<li class="accordian-item">
-										<a href="#/user/1" class="asset-badge">
-											<img class="asset-avatar status-away" src="assets/asset-28x28-pdf.png" /> 
-											<span class="asset-name">2013_Q2-Brief.pdf</span>
-											<span class="asset-info">PDF | 23.1MB</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="accordian-segment widget">
-								<a class="accordian-header" href="#links">
-									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
-									Recent Links
-								</a>
-								<a class="accordian-action btn-search" href="#add" title="Browse Links">Browse Links</a>
-								<ul class="accordian-content">
-									<li class="accordian-item">
-										<a href="#/user/1" class="asset-badge">
-											<img class="asset-avatar status-away" src="assets/asset-28x28-sg.png" /> 
-											<span class="asset-name">Here's a super long link title that goes on and on!</span>
-											<span class="asset-info">http://sample-links.com/heres-a-super-long-link-title/</span>
-										</a>
-									</li>
-									<li class="accordian-item">
-										<a href="#/user/1" class="asset-badge">
-											<img class="asset-avatar status-away" src="assets/asset-28x28-ga.png" /> 
-											<span class="asset-name">And here is another big one!</span>
-											<span class="asset-info">http://sample-links.com/and-here-is-another-big-one/</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</aside>
-			</div>
-		</div>
-	</div>
+  <center>
+  <h2>Desktop Notification Demo</h2>
+
+  <div id="error" style="display:none;">
+    This browser does not support desktop notifications. Try
+    <a href="http://www.google.com/chrome">Chrome</a> instead.
+  </div>
+
+  <p>
+    <a href="#" class="button" id="request-permission">Request Permission</a>
+    <a href="#" class="button" id="notify-me">Notify Me</a>
+  </p>
+
+  <p>
+  For details on how this works, visit <a href="http://0xfe.blogspot.com/2010/04/desktop-notifications-with-webkit.html">0xfe.blogspot.com</a> or <a href="http://github.com/0xfe/experiments/raw/master/www/notifyme.html">view the source</a>.
+  </p>
+
+  </center>
 </body>
 </html>

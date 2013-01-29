@@ -1,0 +1,464 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Harbor - Chat</title>
+  <meta name="viewport" content="width=device-width">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="stylesheets/start.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <link rel="stylesheet" href="stylesheets/end.css">
+	<script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/app.js"></script>
+	<script src="javascripts/iscroll.js"></script>
+	<script src="javascripts/areacomplete.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var calendars = []
+		var iscrolls = []
+		$(".status-schedule-items").each(function(i){
+			var this_id = "schedule_"+i
+			$(this).attr("id", this_id);
+			//calendars.push($(this));
+			iScroll = new iScroll(this_id, {
+				//bounceLock: true,
+				desktopCompatibility: true,
+				hScrollbar: false,
+				vScrollbar: false
+			});
+		});
+		//myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
+	})
+	/*
+		var myScroll;
+
+		function setHeight() {
+			var headerH = document.getElementById('header').offsetHeight;
+			var wrapperH = window.innerHeight - headerH;
+			document.getElementById('wrapper').style.height = wrapperH + 'px';
+		}
+
+		function loaded() {
+			setHeight();
+			myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
+		}
+
+		window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
+		document.addEventListener('touchstart', function(e){ e.preventDefault(); }, false);
+		document.addEventListener('DOMContentLoaded', loaded, false);
+		*/
+	</script>
+</head>
+<body>
+	<div id="app-container">
+		<nav id="nav-container">
+			<h1>Harbor</h1>
+			<div id="nav-user">
+				<a href="#" class="user-badge">
+					<img class="user-avatar" src="assets/avatars/dcohen.png" /> 
+					<span class="user-name">David Cohen</span>
+					<span class="user-info">San Antonio thru Monday</span>
+				</a>
+			</div>
+			<div id="nav-tree" class="accordian">
+				<ul>
+					<li class="accordian-segment active">
+						<a class="accordian-header" href="#org">TechStars</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
+								<a href="#/rooms/1">
+									<span class="accordian-item-title">New York</span>
+									<span class="accordian-item-count">12</span>
+								</a>
+							</li>
+							<li class="accordian-item active">
+								<a href="#/rooms/2">
+									<span class="accordian-item-title">Cloud</span>
+									<span class="accordian-item-count">2</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">Boulder</span>
+									<span class="accordian-item-count"></span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">
+										<img class src="assets/avatars/jseats.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										Jason Seats
+									</span>
+									<span class="accordian-item-count">1</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/3">
+									<span class="accordian-item-title">
+										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										Nicole Glaros
+									</span>
+									<span class="accordian-item-count">7</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="accordian-segment nav-org">
+						<a class="accordian-header" href="#org">Another Company</a>
+						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<ul class="accordian-content">
+							<li class="accordian-item">
+								<a href="#/rooms/4">
+									<span class="accordian-item-title">Lounge</span>
+									<span class="accordian-item-count">2</span>
+								</a>
+							</li>
+							<li class="accordian-item">
+								<a href="#/rooms/5">
+									<span class="accordian-item-title">Dev Team</span>
+									<span class="accordian-item-count"></span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="accordian-segment"><a class="accordian-header" href="#org">A Third Org, Inc.</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="page-container">
+			<div id="room-container">
+				<div id="room-stream" role="main">
+					<header id="utility-nav">
+						
+						<div class="utility-controls" id="stream-activity">
+							<a class="btn-icon btn-stream-activity" href="#"></a>
+						</div>
+						
+						<div class="utility-controls" id="stream-filter">
+							<a class="btn-icon btn-stream-all active" href="#"></a>
+							<a class="btn-icon btn-stream-media" href="#"></a>
+							<a class="btn-icon btn-stream-attach" href="#"></a>
+							<form>
+								<input type="search" placeholder="Search History" value="">
+							</form>
+						</div>
+						
+						<div class="utility-controls" id="utility-settings">
+							<a class="btn-icon btn-utility-settings" href="#"></a>
+						</div>
+						
+					</header>
+					
+					<div id="conversation">
+					<div id="message-container">
+						<ul>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/jseats.png" />
+									<span class="user-name">Jason</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/nglaros.png" />
+									<span class="user-name">Nicole</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/jseats.png" />
+									<span class="user-name">Jason</span>
+									<span class="user-meta">5 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									<strong>@Andy</strong> and <strong>@Walter</strong>, full-stop we're out of 5 Hour Energy!!!
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/dcohen.png" />
+									<span class="user-name">David</span>
+									<span class="user-meta">4 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									My flight gets in tomorrow around 9am. <strong>@all</strong>, who can pick me up?
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/aaguiluz.png" />
+									<span class="user-name">Andy</span>
+									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content" style="margin-bottom: 5px;">
+									<strong>@David</strong>, lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper.
+								</div>
+								<div class="message-content">
+									<strong>@Jason</strong>, Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/jseats.png" />
+									<span class="user-name">Jason</span>
+									<span class="user-meta">32 min <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									I also need a dozen print-outs of the latest pitch sheet... <strong>@Walter</strong>, are you at the office?
+									<div style="border: 1px solid #e5e5e5; background: #fbfbfb; padding: 5px 5px 0; position: relative; margin: 5px 0;">
+										<img src="assets/sheet.png" style="box-shadow: 1px 1px 2px rgba(0,0,0,.2); height: 80px;">
+										<strong style="position: absolute; top: 5px; left: 80px;">Jan21-Pitch-Sheet.pdf</strong>
+										<span style="position: absolute; top: 20px; font-size: 11px; left: 80px;">PDF | 1.2MB</span>
+									</div>
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/wteele.png" />
+									<span class="user-name">Walter</span>
+									<span class="user-meta">9 min <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									I'm on the road right now, can you handle it?
+								</div>
+							</li>
+							<li class="message">
+								<div class="message-author">
+									<img class="user-avatar" src="assets/avatars/aaguiluz.png" />
+									<span class="user-name">Andy</span>
+									<span class="user-meta">3 min <img src="assets/icons/home.png"></span>
+								</div>
+								<div class="message-content">
+									Ok, no problem
+								</div>
+							</li>
+						</ul>
+					</div>
+					</div>
+					<div id="message-compose">
+						<form>
+							<div id="message-field" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" dir="ltr"></div>
+							
+							<input id="message-data" name="message-data" type="hidden" value="">
+							
+							
+							<script>
+								$(function(){
+									var roster = ['Dustin Larimer', 'Lou Kosak', 'Wayne Mulligan'];
+									
+									$("#message-field").areacomplete({
+										wordCount: 2,
+										mode: "outter",
+										on: {
+											query: function(text,cb){
+												var words = [];
+												for( var i=0; i<roster.length; i++ ){
+													if( roster[i].toLowerCase().indexOf(text.toLowerCase()) == 0 ) words.push(roster[i]);
+												}
+												cb(words);                              
+											},
+											selected: function(text, data){
+												return '<a href="#">' + text + '</a>';
+											}
+										}
+									});
+									
+									/*
+									$('#message-field').keyup(function(){
+										var keyed = $(this).html();
+										var match = lookup_user(keyed, roster)
+										if (match){
+											console.log(match)
+										}
+										$("#message-data").val(keyed);
+										// @[334900148:Dustin Larimer]
+									});*/
+								});
+								function lookup_user(key, array) {
+									var key_list, 
+									    key_last;
+									
+									key_list = key.replace(/&nbsp;/gi,'').split(" ");
+									//var key_last = key_list[key_list.length-2] + " " + key_list[key_list.length-1]
+									//console.log(key_last)
+									console.log(key_list.length);
+									
+									if ( key_list.length > 1 ){
+										key_last = key_list[key_list.length-2] + " " + key_list[key_list.length-1]
+									} else {
+										key_last = key_list[key_list.length-1]
+									}
+									console.log("Searching for '"+key_last+"'");
+									
+									var results = [];
+									for (var i = 0; i < array.length; i++) {
+										if (array[i].toLowerCase().indexOf(key_last.toLowerCase()) == 0) {
+											results.push(array[i]);
+										}
+									}
+
+									if (results.length > 0){
+										return results;
+									}
+								}
+							</script>
+							
+							<!-- <textarea id="message-textarea" autofocus required></textarea> -->
+							
+							<div id="button-bank">
+								<a class='btn btn-inverse' href="">Attach</a>
+								<label>
+									<input type="checkbox" value="urgent"> Urgent
+								</label>
+								<button class="btn btn-primary" type="submit">Send</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<aside id="room-sidebar" role="complementary">
+					<div class="accordian">
+						<ul>
+							<li class="accordian-segment widget active">
+								<a class="accordian-header" href="#members">
+									<img class="accordian-icon" src="assets/icons/accordian-members.png" />
+									Members <small>(3)</small>
+								</a>
+								<a class="accordian-action btn-add" href="#add">Add</a>
+								<ul class="accordian-content">
+									
+									<li class="accordian-item">
+										<a class="user-badge">
+											<img class="user-avatar status-away" src="assets/avatars/jseats.png" /> 
+											<span class="user-name">Jason Seats</span>
+											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<ul class="status-schedule-items">
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<span class="status-text">Flying back from Chicago</span>
+											</span>
+										</a>
+									</li>
+									
+									<li class="accordian-item">
+										<a href="#/user/2" class="user-badge">
+											<img class="user-avatar" src="assets/avatars/wteele.png" /> 
+											<span class="user-name">Walter Teele</span>
+											<span class="user-meta"><img src="assets/icons/place-mobile.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar" style="left: 90px; width: 30px"></div>
+												</div>
+												<span class="status-text">Driving to Dallas</span>
+											</span>
+										</a>
+									</li>
+									
+									<li class="accordian-item">
+										<a href="#/user/3" class="user-badge">
+											<img class="user-avatar status-warning" src="assets/avatars/aaguiluz.png" /> 
+											<span class="user-name">Andy Aguiluz</span>
+											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
+													<div class="bar" style="left: 100px; width: 15px"></div>
+												</div>
+												<span class="status-text">My day is cray cray!</span>
+											</span>
+										</a>
+									</li>
+									
+									<li class="accordian-item">
+										<a href="#/user/3" class="user-badge" style="opacity: .5;">
+											<img class="user-avatar status-warning" src="assets/avatars/nglaros.png" /> 
+											<span class="user-name">Nicole Glaros</span>
+											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
+											<span class="user-info">
+												<div class="status-time">
+													<div class="bar" style="left: 50px; width: 15px"></div>
+													<div class="bar" style="left: 70px; width: 15px"></div>
+													<div class="bar" style="left: 100px; width: 15px"></div>
+												</div>
+												<span class="status-text">Home for the weekend!</span>
+											</span>
+										</a>
+									</li>
+									
+								</ul>
+							</li>
+							<li class="accordian-segment widget">
+								<a class="accordian-header" href="#files">
+									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
+									Recent Files
+								</a>
+								<a class="accordian-action btn-search" href="#add" title="Browse Files">Browse Files</a>
+								<ul class="accordian-content">
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28.png" /> 
+											<span class="asset-name">Screenshot-123.png</span>
+											<span class="asset-info">PNG | 4.3MB</span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-pdf.png" /> 
+											<span class="asset-name">2013_Q2-Brief.pdf</span>
+											<span class="asset-info">PDF | 23.1MB</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="accordian-segment widget">
+								<a class="accordian-header" href="#links">
+									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
+									Recent Links
+								</a>
+								<a class="accordian-action btn-search" href="#add" title="Browse Links">Browse Links</a>
+								<ul class="accordian-content">
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-sg.png" /> 
+											<span class="asset-name">Here's a super long link title that goes on and on!</span>
+											<span class="asset-info">http://sample-links.com/heres-a-super-long-link-title/</span>
+										</a>
+									</li>
+									<li class="accordian-item">
+										<a href="#/user/1" class="asset-badge">
+											<img class="asset-avatar status-away" src="assets/asset-28x28-ga.png" /> 
+											<span class="asset-name">And here is another big one!</span>
+											<span class="asset-info">http://sample-links.com/and-here-is-another-big-one/</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
