@@ -20,7 +20,7 @@
 	$(function(){
 		var calendars = []
 		var iscrolls = []
-		$(".status-schedule-items").each(function(i){
+		$(".user-schedule ul").each(function(i){
 			var this_id = "schedule_"+i
 			$(this).attr("id", this_id);
 			//calendars.push($(this));
@@ -61,7 +61,7 @@
 				<a href="#" class="user-badge">
 					<img class="user-avatar" src="assets/avatars/dcohen.png" /> 
 					<span class="user-name">David Cohen</span>
-					<span class="user-info">San Antonio thru Monday</span>
+					<span class="user-status">San Antonio thru Monday</span>
 				</a>
 			</div>
 			<div id="nav-tree" class="accordian">
@@ -128,6 +128,7 @@
 					</li>
 					<li class="accordian-segment"><a class="accordian-header" href="#org">A Third Org, Inc.</a></li>
 				</ul>
+				<a class="btn-add" href="#">Add an Organization</a>
 			</div>
 		</nav>
 		<div id="page-container">
@@ -344,20 +345,18 @@
 											<img class="user-avatar status-away" src="assets/avatars/jseats.png" /> 
 											<span class="user-name">Jason Seats</span>
 											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<ul class="status-schedule-items">
-														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
-														<li class="bar" style="left: 50px; width: 15px;"></li>
-														<li class="bar" style="left: 90px; width: 30px"></li>
-														<li class="bar" style="left: 130px; width: 15px;"></li>
-														<li class="bar" style="left: 150px; width: 30px"></li>
-														<li class="bar" style="left: 200px; width: 15px;"></li>
-														<li class="bar" style="left: 250px; width: 30px"></li>
-													</ul>
-												</div>
-												<span class="status-text">Flying back from Chicago</span>
-											</span>
+											<span class="user-status">Flying back from Chicago</span>
+											<div class="user-schedule">
+												<ul>
+													<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+													<li class="bar" style="left: 50px; width: 15px;"></li>
+													<li class="bar" style="left: 90px; width: 30px"></li>
+													<li class="bar" style="left: 130px; width: 15px;"></li>
+													<li class="bar" style="left: 150px; width: 30px"></li>
+													<li class="bar" style="left: 200px; width: 15px;"></li>
+													<li class="bar" style="left: 250px; width: 30px"></li>
+												</ul>
+											</div>
 										</a>
 									</li>
 									
@@ -366,12 +365,10 @@
 											<img class="user-avatar" src="assets/avatars/wteele.png" /> 
 											<span class="user-name">Walter Teele</span>
 											<span class="user-meta"><img src="assets/icons/place-mobile.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar" style="left: 90px; width: 30px"></div>
-												</div>
-												<span class="status-text">Driving to Dallas</span>
-											</span>
+											<span class="user-status">Driving to Dallas</span>
+											<div class="user-schedule">
+												<div class="bar" style="left: 90px; width: 30px"></div>
+											</div>
 										</a>
 									</li>
 									
@@ -380,13 +377,11 @@
 											<img class="user-avatar status-warning" src="assets/avatars/aaguiluz.png" /> 
 											<span class="user-name">Andy Aguiluz</span>
 											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
-													<div class="bar" style="left: 100px; width: 15px"></div>
-												</div>
-												<span class="status-text">My day is cray cray!</span>
-											</span>
+											<span class="user-status">My day is cray cray!</span>
+											<div class="user-schedule">
+												<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
+												<div class="bar" style="left: 100px; width: 15px"></div>
+											</div>
 										</a>
 									</li>
 									
@@ -395,14 +390,12 @@
 											<img class="user-avatar status-warning" src="assets/avatars/nglaros.png" /> 
 											<span class="user-name">Nicole Glaros</span>
 											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
-											<span class="user-info">
-												<div class="status-time">
-													<div class="bar" style="left: 50px; width: 15px"></div>
-													<div class="bar" style="left: 70px; width: 15px"></div>
-													<div class="bar" style="left: 100px; width: 15px"></div>
-												</div>
-												<span class="status-text">Home for the weekend!</span>
-											</span>
+											<span class="user-status">Home for the weekend!</span>
+											<div class="user-schedule">
+												<div class="bar" style="left: 50px; width: 15px"></div>
+												<div class="bar" style="left: 70px; width: 15px"></div>
+												<div class="bar" style="left: 100px; width: 15px"></div>
+											</div>
 										</a>
 									</li>
 									

@@ -20,7 +20,7 @@
 	$(function(){
 		var calendars = []
 		var iscrolls = []
-		$(".status-schedule-items").each(function(i){
+		$(".user-schedule ul").each(function(i){
 			var this_id = "schedule_"+i
 			$(this).attr("id", this_id);
 			//calendars.push($(this));
@@ -61,7 +61,7 @@
 				<a href="#" class="user-badge">
 					<img class="user-avatar" src="assets/avatars/dcohen.png" /> 
 					<span class="user-name">David Cohen</span>
-					<span class="user-info">San Antonio thru Monday</span>
+					<span class="user-status">San Antonio thru Monday</span>
 				</a>
 			</div>
 			<div id="nav-tree" class="accordian">
@@ -69,14 +69,14 @@
 					<li class="accordian-segment active">
 						<a class="accordian-header" href="#org">TechStars</a>
 						<a class="accordian-action btn-settings" href="#settings">Settings</a>
-						<ul class="accordian-content">
+						<ul class="accordian-content" id="rooms">
 							<li class="accordian-item">
 								<a href="#/rooms/1">
 									<span class="accordian-item-title">New York</span>
 									<span class="accordian-item-count">12</span>
 								</a>
 							</li>
-							<li class="accordian-item active">
+							<li class="accordian-item">
 								<a href="#/rooms/2">
 									<span class="accordian-item-title">Cloud</span>
 									<span class="accordian-item-count">2</span>
@@ -88,11 +88,12 @@
 									<span class="accordian-item-count"></span>
 								</a>
 							</li>
+						</ul>
+						<ul class="accordian-content" id="roster">
 							<li class="accordian-item">
 								<a href="#/rooms/3">
 									<span class="accordian-item-title">
-										<img class src="assets/avatars/jseats.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
-										Jason Seats
+										<img class="user-avatar" src="assets/avatars/jseats.png" /> Jason Seats big long name here
 									</span>
 									<span class="accordian-item-count">1</span>
 								</a>
@@ -100,18 +101,17 @@
 							<li class="accordian-item">
 								<a href="#/rooms/3">
 									<span class="accordian-item-title">
-										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
-										Nicole Glaros
+										<img class="user-avatar" src="assets/avatars/nglaros.png" /> Nicole Glaros
 									</span>
 									<span class="accordian-item-count">7</span>
 								</a>
 							</li>
-							<li class="accordian-item">
+							<li class="accordian-item active">
 								<a href="#/">
 									<span class="accordian-item-title">
-										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
-										Browse All
+										<img src="assets/icons/avatar-directory.png" /> Browse all
 									</span>
+									<span class="accordian-item-count"></span>
 								</a>
 							</li>
 						</ul>
@@ -136,18 +136,19 @@
 					</li>
 					<li class="accordian-segment"><a class="accordian-header" href="#org">A Third Org, Inc.</a></li>
 				</ul>
+				<a class="btn-add" href="#">Add an Organization</a>
 			</div>
 		</nav>
 		<div id="page-container">
 			<div id="directory-container" role="main">
 				
 				<header id="utility-nav">
-						
+
 						<div class="utility-controls" id="directory-filter">
 							<a class="btn-directory-contacts active" href="#">Contacts</a>
 							<a class="btn-directory-streams" href="#">Streams</a>
 							<form>
-								<input type="search" placeholder="Search History" value="">
+								<input type="search" placeholder="Search" value="">
 							</form>
 						</div>
 						
@@ -162,7 +163,103 @@
 							<a class="btn-icon btn-utility-settings" href="#"></a>
 						</div>
 						
-					</header>
+				</header>
+					
+					<div id="directory-list">
+						<div id="listing-container">
+							<ul>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing active">
+
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+
+									<div class="user-listing-primary">
+
+										<div class="user-listing-profile">
+											<h2>Some Dude <small>Sr. Software Engineer</small></h2>
+											<span class="user-last">Last active: <a href="#">Developer Lounge</a></span>
+										</div>
+
+										<div class="user-listing-access">
+											<span class="user-status">Flying back from Chicago</span>
+											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
+											<div class="user-schedule">
+												<ul>
+													<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+													<li class="bar" style="left: 50px; width: 15px;"></li>
+													<li class="bar" style="left: 90px; width: 30px"></li>
+													<li class="bar" style="left: 130px; width: 15px;"></li>
+													<li class="bar" style="left: 150px; width: 30px"></li>
+													<li class="bar" style="left: 200px; width: 15px;"></li>
+													<li class="bar" style="left: 250px; width: 30px"></li>
+												</ul>
+											</div>
+
+										</div>
+
+									</div>
+
+
+									<div class="user-listing-secondary">
+
+										<div class="user-listing-profile">
+											<dl class="user-listing-location">
+												<dt>Frequent Locations</dt>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+											</dl>
+											<dl class="user-listing-contact">
+												<dt>Contact Info</dt>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+											</dl>
+										</div>
+
+										<div class="user-listing-access">
+											<a class="btn btn-large btn-inverse" href="#">Send a Message</a>
+											<a class="btn btn-large btn-inverse" href="#">Add to a Room</a>
+										</div>
+
+									</div>
+
+
+
+
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+								<li class="listing">
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+								</li>
+							</ul>
+						</div>
+					</div>
 					
 			</div>
 		</div>
