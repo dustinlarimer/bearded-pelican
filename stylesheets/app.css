@@ -53,6 +53,8 @@ li ::-moz-selection { /* Firefox */
 	box-shadow: inset 1px 0 2px rgba(0,0,0,.4);
   color: #fff;
   height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
   position: absolute;
   width: 200px;
   z-index: 999;
@@ -1184,6 +1186,8 @@ mark{
 	box-shadow: inset -1px 0 2px rgba(0,0,0,.4);
 	color: #fff;
 	height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -1318,7 +1322,8 @@ li.listing dl {
 }
 li.listing dt { color: #e5e5e5; font-weight: 700; }
 li.listing dd,
-li.listing dd a { color: #808080; margin: 0; }
+li.listing dd a { color: #808080; font-size: 11px; line-height: 18px; margin: 0; }
+li.listing dd i.icon { display: inline-block; margin: 0 2px 0 0; opacity: .5; vertical-align: top }
 
 	li.listing .user-listing-secondary:after,
 	li.listing .user-listing-profile:after,
