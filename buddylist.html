@@ -18,39 +18,23 @@
 	<script src="javascripts/areacomplete.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		var calendars = []
-		var iscrolls = []
-		$(".user-schedule ul").each(function(i){
-			var this_id = "schedule_"+i
+		//var calendars = []
+		//var iscrolls = []
+		$(".user-schedule").each(function(i){
+			var this_id = "user-schedule_"+i
 			$(this).attr("id", this_id);
 			//calendars.push($(this));
-			iScroll = new iScroll(this_id, {
-				//bounceLock: true,
-				desktopCompatibility: true,
+			var scrollpane = new iScroll(this_id, {
+				snap: true,
+				bounce: false,
+				momentum: true,
+				vScroll: false,
+				hScroll: true,
 				hScrollbar: false,
 				vScrollbar: false
 			});
 		});
-		//myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
 	})
-	/*
-		var myScroll;
-
-		function setHeight() {
-			var headerH = document.getElementById('header').offsetHeight;
-			var wrapperH = window.innerHeight - headerH;
-			document.getElementById('wrapper').style.height = wrapperH + 'px';
-		}
-
-		function loaded() {
-			setHeight();
-			myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
-		}
-
-		window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
-		document.addEventListener('touchstart', function(e){ e.preventDefault(); }, false);
-		document.addEventListener('DOMContentLoaded', loaded, false);
-		*/
 	</script>
 </head>
 <body>
@@ -68,7 +52,7 @@
 				<ul>
 					<li class="accordian-segment active">
 						<a class="accordian-header" href="#org">TechStars</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<a class="accordian-action icon icon-settings" href="#settings">Settings</a>
 						<ul class="accordian-content" id="rooms">
 							<li class="accordian-item">
 								<a href="#/rooms/1">
@@ -100,7 +84,7 @@
 							</li>
 							<li class="accordian-item">
 								<a href="#/rooms/3">
-									<span class="accordian-item-title">
+									<span class="accordian-item-title user-inactive">
 										<img class="user-avatar" src="assets/avatars/nglaros.png" /> Nicole Glaros
 									</span>
 									<span class="accordian-item-count">7</span>
@@ -118,7 +102,7 @@
 					</li>
 					<li class="accordian-segment nav-org">
 						<a class="accordian-header" href="#org">Another Company</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<a class="accordian-action icon icon-settings" href="#settings">Settings</a>
 						<ul class="accordian-content">
 							<li class="accordian-item">
 								<a href="#/rooms/4">
@@ -184,17 +168,88 @@
 
 										<div class="user-listing-access">
 											<span class="user-status">Flying back from Chicago</span>
-											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
+											<span class="user-meta">
+												<i class="icon icon-rocket" href="#" title="Home"></i>
+											</span>
 											<div class="user-schedule">
-												<ul>
-													<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
-													<li class="bar" style="left: 50px; width: 15px;"></li>
-													<li class="bar" style="left: 90px; width: 30px"></li>
-													<li class="bar" style="left: 130px; width: 15px;"></li>
-													<li class="bar" style="left: 150px; width: 30px"></li>
-													<li class="bar" style="left: 200px; width: 15px;"></li>
-													<li class="bar" style="left: 250px; width: 30px"></li>
-												</ul>
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
+											</div>
+
+										</div>
+
+									</div>
+
+
+									<div class="user-listing-secondary">
+
+										<div class="user-listing-profile">
+											<dl class="user-listing-location">
+												<dt>Frequent Locations</dt>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+												<dd>Icon Home &#149; Monday thru Wednesday</dd>
+											</dl>
+											<dl class="user-listing-contact">
+												<dt>Contact Info</dt>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+												<dd>Icon <a href="#">email@company.com</a> &#149; Never :)</dd>
+											</dl>
+										</div>
+
+										<div class="user-listing-access">
+											<a class="btn btn-large btn-inverse" href="#">Send a Message</a>
+											<a class="btn btn-large btn-inverse" href="#">Add to a Room</a>
+										</div>
+
+									</div>
+
+
+
+
+								</li>
+								<li class="listing">
+
+									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
+
+									<div class="user-listing-primary">
+
+										<div class="user-listing-profile">
+											<h2>Some Dude <small>Sr. Software Engineer</small></h2>
+											<span class="user-last">Last active: <a href="#">Developer Lounge</a></span>
+										</div>
+
+										<div class="user-listing-access">
+											<span class="user-status">Flying back from Chicago</span>
+											<span class="user-meta">
+												<i class="icon icon-rocket" href="#" title="Home"></i>
+											</span>
+											<div class="user-schedule">
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
 											</div>
 
 										</div>

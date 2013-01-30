@@ -18,39 +18,23 @@
 	<script src="javascripts/areacomplete.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		var calendars = []
-		var iscrolls = []
-		$(".user-schedule ul").each(function(i){
-			var this_id = "schedule_"+i
+		//var calendars = []
+		//var iscrolls = []
+		$(".user-schedule").each(function(i){
+			var this_id = "user-schedule_"+i
 			$(this).attr("id", this_id);
 			//calendars.push($(this));
-			iScroll = new iScroll(this_id, {
-				//bounceLock: true,
-				desktopCompatibility: true,
+			var scrollpane = new iScroll(this_id, {
+				snap: true,
+				bounce: false,
+				momentum: true,
+				vScroll: false,
+				hScroll: true,
 				hScrollbar: false,
 				vScrollbar: false
 			});
 		});
-		//myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
 	})
-	/*
-		var myScroll;
-
-		function setHeight() {
-			var headerH = document.getElementById('header').offsetHeight;
-			var wrapperH = window.innerHeight - headerH;
-			document.getElementById('wrapper').style.height = wrapperH + 'px';
-		}
-
-		function loaded() {
-			setHeight();
-			myScroll = new iScroll('.status-schedule-items', {bounceLock:true});
-		}
-
-		window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
-		document.addEventListener('touchstart', function(e){ e.preventDefault(); }, false);
-		document.addEventListener('DOMContentLoaded', loaded, false);
-		*/
 	</script>
 </head>
 <body>
@@ -68,8 +52,8 @@
 				<ul>
 					<li class="accordian-segment active">
 						<a class="accordian-header" href="#org">TechStars</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
-						<ul class="accordian-content">
+						<a class="accordian-action icon icon-settings" href="#settings">Settings</a>
+						<ul class="accordian-content" id="rooms">
 							<li class="accordian-item">
 								<a href="#/rooms/1">
 									<span class="accordian-item-title">New York</span>
@@ -88,10 +72,12 @@
 									<span class="accordian-item-count"></span>
 								</a>
 							</li>
+						</ul>
+						<ul class="accordian-content" id="roster">
 							<li class="accordian-item">
 								<a href="#/rooms/3">
 									<span class="accordian-item-title">
-										<img class src="assets/avatars/jseats.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+										<img class src="assets/avatars/jseats.png" />
 										Jason Seats
 									</span>
 									<span class="accordian-item-count">1</span>
@@ -99,8 +85,8 @@
 							</li>
 							<li class="accordian-item">
 								<a href="#/rooms/3">
-									<span class="accordian-item-title">
-										<img class src="assets/avatars/nglaros.png" style="box-shadow: 1px 1px 1px rgba(0,0,0,.3); margin-right: 4px; float: left; height: 18px; border-radius: 2px;" />
+									<span class="accordian-item-title user-inactive">
+										<img class src="assets/avatars/nglaros.png" />
 										Nicole Glaros
 									</span>
 									<span class="accordian-item-count">7</span>
@@ -110,7 +96,7 @@
 					</li>
 					<li class="accordian-segment nav-org">
 						<a class="accordian-header" href="#org">Another Company</a>
-						<a class="accordian-action btn-settings" href="#settings">Settings</a>
+						<a class="accordian-action icon icon-settings" href="#settings">Settings</a>
 						<ul class="accordian-content">
 							<li class="accordian-item">
 								<a href="#/rooms/4">
@@ -162,7 +148,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/jseats.png" />
 									<span class="user-name">Jason</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+									<span class="user-meta">2 hrs <i class="icon icon-airplane" href="#" title="Home"></i></span>
 								</div>
 								<div class="message-content">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper. Vestibulum fermentum massa ac mi pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
@@ -172,7 +158,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/nglaros.png" />
 									<span class="user-name">Nicole</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+									<span class="user-meta">2 hrs <i class="icon icon-home" href="#" title="Home"></i></span>
 								</div>
 								<div class="message-content">
 									Pellentesque consectetur et eu nulla. Cras varius sem ac mauris tempus varius.
@@ -182,7 +168,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/jseats.png" />
 									<span class="user-name">Jason</span>
-									<span class="user-meta">5 hrs <img src="assets/icons/home.png"></span>
+									<span class="user-meta">5 hrs <i class="icon icon-airplane" href="#" title="Home"></i></span>
 								</div>
 								<div class="message-content">
 									<strong>@Andy</strong> and <strong>@Walter</strong>, full-stop we're out of 5 Hour Energy!!!
@@ -192,7 +178,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/dcohen.png" />
 									<span class="user-name">David</span>
-									<span class="user-meta">4 hrs <img src="assets/icons/home.png"></span>
+									<span class="user-meta">4 hrs <i class="icon icon-airplane" href="#" title="Traveling"></i></span>
 								</div>
 								<div class="message-content">
 									My flight gets in tomorrow around 9am. <strong>@all</strong>, who can pick me up?
@@ -202,7 +188,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/aaguiluz.png" />
 									<span class="user-name">Andy</span>
-									<span class="user-meta">2 hrs <img src="assets/icons/home.png"></span>
+									<span class="user-meta">2 hrs <i class="icon icon-home" href="#" title="Home"></i></span>
 								</div>
 								<div class="message-content" style="margin-bottom: 5px;">
 									<strong>@David</strong>, lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur hendrerit dui, et congue nisl semper ullamcorper.
@@ -215,7 +201,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/jseats.png" />
 									<span class="user-name">Jason</span>
-									<span class="user-meta">32 min <img src="assets/icons/home.png"></span>
+									<span class="user-meta">32 min <i class="icon icon-airplane" href="#" title="Traveling"></i></span>
 								</div>
 								<div class="message-content">
 									I also need a dozen print-outs of the latest pitch sheet... <strong>@Walter</strong>, are you at the office?
@@ -230,7 +216,10 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/wteele.png" />
 									<span class="user-name">Walter</span>
-									<span class="user-meta">9 min <img src="assets/icons/home.png"></span>
+									<span class="user-meta">
+										9 min 
+										<i class="icon icon-mobile" href="#" title="Mobile"></i>
+									</span>
 								</div>
 								<div class="message-content">
 									I'm on the road right now, can you handle it?
@@ -240,7 +229,7 @@
 								<div class="message-author">
 									<img class="user-avatar" src="assets/avatars/aaguiluz.png" />
 									<span class="user-name">Andy</span>
-									<span class="user-meta">3 min <img src="assets/icons/home.png"></span>
+									<span class="user-meta">3 min <i class="icon icon-home" href="#" title="Home"></i></span>
 								</div>
 								<div class="message-content">
 									Ok, no problem
@@ -337,25 +326,31 @@
 									<img class="accordian-icon" src="assets/icons/accordian-members.png" />
 									Members <small>(3)</small>
 								</a>
-								<a class="accordian-action btn-add" href="#add">Add</a>
+								<a class="accordian-action icon icon-add" href="#add">Add</a>
 								<ul class="accordian-content">
 									
 									<li class="accordian-item">
 										<a class="user-badge">
 											<img class="user-avatar status-away" src="assets/avatars/jseats.png" /> 
 											<span class="user-name">Jason Seats</span>
-											<span class="user-meta"><img src="assets/icons/place-rocket.png" /></span>
+											<span class="user-meta">
+												<i class="icon icon-rocket-gloss" href="#" title="Home"></i>
+											</span>
 											<span class="user-status">Flying back from Chicago</span>
 											<div class="user-schedule">
-												<ul>
-													<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
-													<li class="bar" style="left: 50px; width: 15px;"></li>
-													<li class="bar" style="left: 90px; width: 30px"></li>
-													<li class="bar" style="left: 130px; width: 15px;"></li>
-													<li class="bar" style="left: 150px; width: 30px"></li>
-													<li class="bar" style="left: 200px; width: 15px;"></li>
-													<li class="bar" style="left: 250px; width: 30px"></li>
-												</ul>
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
 											</div>
 										</a>
 									</li>
@@ -364,10 +359,24 @@
 										<a href="#/user/2" class="user-badge">
 											<img class="user-avatar" src="assets/avatars/wteele.png" /> 
 											<span class="user-name">Walter Teele</span>
-											<span class="user-meta"><img src="assets/icons/place-mobile.png" /></span>
+											<span class="user-meta">
+												<i class="icon icon-mobile-gloss" href="#" title="Mobile"></i>
+											</span>
 											<span class="user-status">Driving to Dallas</span>
 											<div class="user-schedule">
-												<div class="bar" style="left: 90px; width: 30px"></div>
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
 											</div>
 										</a>
 									</li>
@@ -376,25 +385,50 @@
 										<a href="#/user/3" class="user-badge">
 											<img class="user-avatar status-warning" src="assets/avatars/aaguiluz.png" /> 
 											<span class="user-name">Andy Aguiluz</span>
-											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
+											<span class="user-meta">
+												<i class="icon icon-home-gloss" href="#" title="Home"></i>
+											</span>
 											<span class="user-status">My day is cray cray!</span>
 											<div class="user-schedule">
-												<div class="bar bar-warning" style="left: 15px; width: 45px;"></div>
-												<div class="bar" style="left: 100px; width: 15px"></div>
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
 											</div>
 										</a>
 									</li>
 									
 									<li class="accordian-item">
-										<a href="#/user/3" class="user-badge" style="opacity: .5;">
+										<a href="#/user/3" class="user-badge user-inactive">
 											<img class="user-avatar status-warning" src="assets/avatars/nglaros.png" /> 
 											<span class="user-name">Nicole Glaros</span>
-											<span class="user-meta"><img src="assets/icons/place-home.png" /></span>
+											<span class="user-meta">
+												<i class="icon icon-home-gloss" href="#" title="Home"></i>
+											</span>
 											<span class="user-status">Home for the weekend!</span>
 											<div class="user-schedule">
-												<div class="bar" style="left: 50px; width: 15px"></div>
-												<div class="bar" style="left: 70px; width: 15px"></div>
-												<div class="bar" style="left: 100px; width: 15px"></div>
+												<div class="timespan">
+													<ul>
+														<li class="bar bar-danger" style="left: 0px; width: 30px;"></li>
+														<li class="bar" style="left: 50px; width: 15px;"></li>
+														<li class="bar" style="left: 90px; width: 30px"></li>
+														<li class="bar" style="left: 130px; width: 15px;"></li>
+														<li class="bar" style="left: 150px; width: 30px"></li>
+														<li class="bar" style="left: 200px; width: 15px;"></li>
+														<li class="bar" style="left: 250px; width: 30px"></li>
+													</ul>
+												</div>
+												<div class="timespan-begin">11a</div>
+												<div class="timespan-end">2</div>
 											</div>
 										</a>
 									</li>
@@ -406,7 +440,7 @@
 									<img class="accordian-icon" src="assets/icons/accordian-drive.png" />
 									Recent Files
 								</a>
-								<a class="accordian-action btn-search" href="#add" title="Browse Files">Browse Files</a>
+								<a class="accordian-action icon icon-search" href="#add" title="Browse Files">Browse Files</a>
 								<ul class="accordian-content">
 									<li class="accordian-item">
 										<a href="#/user/1" class="asset-badge">
@@ -429,7 +463,7 @@
 									<img class="accordian-icon" src="assets/icons/accordian-links.png" />
 									Recent Links
 								</a>
-								<a class="accordian-action btn-search" href="#add" title="Browse Links">Browse Links</a>
+								<a class="accordian-action icon icon-search" href="#add" title="Browse Links">Browse Links</a>
 								<ul class="accordian-content">
 									<li class="accordian-item">
 										<a href="#/user/1" class="asset-badge">
