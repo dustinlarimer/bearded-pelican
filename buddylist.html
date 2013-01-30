@@ -20,6 +20,12 @@
 	$(function(){
 		//var calendars = []
 		//var iscrolls = []
+		$(".user-listing-profile").click(function(){
+			$(this).parent().parent().toggleClass("active");
+		})
+		
+		
+		
 		$(".user-schedule").each(function(i){
 			var this_id = "user-schedule_"+i
 			$(this).attr("id", this_id);
@@ -156,12 +162,11 @@
 									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
 								</li>
 								<li class="listing active">
-
-									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
-
+									
 									<div class="user-listing-primary">
 
 										<div class="user-listing-profile">
+											<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
 											<h2>Some Dude <small>Sr. Software Engineer</small></h2>
 											<span class="user-last">Last active: <a href="#">Developer Lounge</a></span>
 										</div>
@@ -194,7 +199,7 @@
 
 									<div class="user-listing-secondary">
 
-										<div class="user-listing-profile">
+										<div class="user-listing-detail">
 											<dl class="user-listing-location">
 												<dt>Frequent Locations</dt>
 												<dd>Icon Home &#149; Monday thru Wednesday</dd>
@@ -209,7 +214,7 @@
 											</dl>
 										</div>
 
-										<div class="user-listing-access">
+										<div class="user-listing-action">
 											<a class="btn btn-large btn-inverse" href="#">Send a Message</a>
 											<a class="btn btn-large btn-inverse" href="#">Add to a Room</a>
 										</div>
@@ -221,12 +226,11 @@
 
 								</li>
 								<li class="listing">
-
-									<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
-
+									
 									<div class="user-listing-primary">
 
 										<div class="user-listing-profile">
+											<img class="user-listing-avatar" src="assets/avatar-40x40.png" />
 											<h2>Some Dude <small>Sr. Software Engineer</small></h2>
 											<span class="user-last">Last active: <a href="#">Developer Lounge</a></span>
 										</div>
@@ -259,7 +263,7 @@
 
 									<div class="user-listing-secondary">
 
-										<div class="user-listing-profile">
+										<div class="user-listing-detail">
 											<dl class="user-listing-location">
 												<dt>Frequent Locations</dt>
 												<dd>Icon Home &#149; Monday thru Wednesday</dd>
@@ -274,7 +278,7 @@
 											</dl>
 										</div>
 
-										<div class="user-listing-access">
+										<div class="user-listing-action">
 											<a class="btn btn-large btn-inverse" href="#">Send a Message</a>
 											<a class="btn btn-large btn-inverse" href="#">Add to a Room</a>
 										</div>

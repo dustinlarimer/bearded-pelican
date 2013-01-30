@@ -1277,39 +1277,43 @@ border-color: #dd514c;
 	display: block;
 	font-size: 12px;
 	min-height: 60px;
-	padding: 10px;
+	padding: 0;
 	position: relative;
 }
 li.listing:after { clear: both; content: '.', display: block; height: 0; visibility: hidden; }
 
-li.listing img.user-listing-avatar {
-	box-shadow: 1px 1px 1px rgba(0,0,0,.15);
-	left: 14px;
-	position: absolute;
-}
-li.listing .user-listing-primary,
-li.listing .user-listing-secondary { margin: 0 200px 0 60px; }
-li.listing .user-listing-secondary { display: none; min-height: 80px; overflow: auto; }
-li.listing .user-listing-profile { overflow: auto; }
-li.listing .user-listing-access {
+li.listing .user-listing-primary { height: 60px; right: 200px; margin: 0 200px 0 0; }
+li.listing .user-listing-secondary { display: none; margin: 0 200px 0 60px; min-height: 80px; overflow: auto; padding: 0 0 10px; }
+
+li.listing .user-listing-profile { cursor: pointer; padding: 10px 0 10px 10px; position: relative; }
+	li.listing img.user-listing-avatar {
+		box-shadow: 1px 1px 1px rgba(0,0,0,.15);
+		float: left;
+		margin: 0 10px 0 0;
+	}
+
+li.listing .user-listing-access,
+li.listing .user-listing-action {
 	position: absolute;
 	right: 10px;
+	top: 13px;
 	width: 180px;
 }
-li.listing .user-listing-primary .user-listing-profile { height: 40px; }
-li.listing .user-listing-primary .user-listing-access { top: 10px; height: 40px; }
-li.listing .user-listing-secondary .user-listing-access { top: 60px; }
+
+li.listing .user-listing-action { top: 60px; }
+
 
 li.listing h2 { color: #333; font-size: 16px; margin: 2px 0; }
 li.listing h2 small { font-size: 12px; font-weight: normal; padding-left: 3px; }
 li.listing .user-last a { color: #333; font-weight: 700; }
 li.listing a.btn { display: block; margin: 0 0 8px; }
-
+li.listing .user-status { color: #666; }
+li.listing .user-meta { top: 4px; }
 
 li.listing dl {
 	float: left;
 	line-height: 16px;
-	margin: 8px 3% 0 0;
+	margin: 0 3% 0 0;
 	width: 47%;
 }
 li.listing dt { color: #e5e5e5; font-weight: 700; }
